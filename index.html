@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>صفحه فروشگاه</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* تنظیمات اختصاصی */
+      body {
+        direction: rtl;
+        font-family: sans-serif;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        background-color: #f8f9fa;
+      }
+      .header-icons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+      .header-icons svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        cursor: pointer;
+      }
+      .header-buttons {
+        display: flex;
+        align-items: center;
+      }
+      .header-buttons button {
+        margin: 0 5px;
+      }
+      .auth-box {
+        border: 1px solid #131314;
+        border-radius: 0.25rem;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+      }
+      .auth-box span {
+        margin: 0 10px;
+        color: #6c757d;
+      }
+      .carousel {
+        position: relative;
+      }
+      .carousel-inner {
+        width: 100%;
+      }
+      .carousel-item img {
+        width: 100%;
+        height: auto;
+      }
+      .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+      }
+      .carousel-indicators button {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        opacity: 0.7;
+      }
+      .carousel-indicators .active {
+        background-color: #333;
+      }
+      .card {
+        position: relative;
+        text-align: center;
+        padding-bottom: 40px; /* فضای برای دکمه‌ها */
+      }
+      .badge-special {
+        background-color: red;
+        color: white;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+      }
+      .stars {
+        color: gold;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1rem;
+      }
+      .product-image {
+        height: 150px;
+        object-fit: contain;
+        margin: 15px auto; /* وسط چین کردن عکس */
+      }
+      .card-body h5 {
+        margin-top: 15px;
+        margin-bottom: 20px; /* فاصله از قیمت */
+      }
+      .card-body .price {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 1rem;
+        color: #000;
+      }
+      .action-buttons {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      .action-buttons a {
+        margin-left: 5px;
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        background-color: green;
+        color: white;
+      }
+      .action-buttons a:hover {
+        background-color: darkgreen;
+      }
+      .action-buttons .btn-heart {
+        background-color: red;
+      }
+      .action-buttons .btn-heart:hover {
+        background-color: darkred;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-icons">
+        <svg
+          id="Interface_User_Single_32"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <rect
+            width="32"
+            height="32"
+            stroke="none"
+            fill="#000000"
+            opacity="0"
+          />
+
+          <g transform="matrix(2 0 0 2 16 16)">
+            <g style="">
+              <g transform="matrix(1 0 0 1 0 -3.25)">
+                <circle
+                  style="
+                    stroke: rgb(0, 0, 0);
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: round;
+                    stroke-dashoffset: 0;
+                    stroke-linejoin: round;
+                    stroke-miterlimit: 4;
+                    fill: none;
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  cx="0"
+                  cy="0"
+                  r="3.25"
+                />
+              </g>
+              <g transform="matrix(1 0 0 1 0 4.25)">
+                <path
+                  style="
+                    stroke: rgb(0, 0, 0);
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: round;
+                    stroke-dashoffset: 0;
+                    stroke-linejoin: round;
+                    stroke-miterlimit: 4;
+                    fill: none;
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  transform=" translate(-7, -11.25)"
+                  d="M 13.18 13.5 C 12.318612897595246 10.813927778801498 9.82081047177642 8.991842576997477 7 8.991842576997477 C 4.17918952822358 8.991842576997477 1.681387102404754 10.8139277788015 0.8200000000000003 13.5 Z"
+                  stroke-linecap="round"
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          x="0px"
+          y="0px"
+          width="100"
+          height="100"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 11 21 L 11 15 L 13 15 L 13 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z M 12 4.7910156 L 18 10.191406 L 18 11 L 18 19 L 15 19 L 15 13 L 9 13 L 9 19 L 6 19 L 6 10.191406 L 12 4.7910156 z"
+          ></path>
+        </svg>
+        <svg
+          id="Shopping_Cart_32"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <rect
+            width="32"
+            height="32"
+            stroke="none"
+            fill="#000000"
+            opacity="0"
+          />
+
+          <g transform="matrix(0.58 0 0 0.58 16 16)">
+            <path
+              style="
+                stroke: none;
+                stroke-width: 1;
+                stroke-dasharray: none;
+                stroke-linecap: butt;
+                stroke-dashoffset: 0;
+                stroke-linejoin: miter;
+                stroke-miterlimit: 4;
+                fill: rgb(0, 0, 0);
+                fill-rule: nonzero;
+                opacity: 1;
+              "
+              transform=" translate(-24, -26)"
+              d="M 1.8125 2 C 1.78125 2.007813 1.75 2.019531 1.71875 2.03125 C 0.746094 2.167969 0 2.992188 0 4 C 0 5.105469 0.894531 6 2 6 C 3.105469 6 4 5.105469 4 4 L 8.65625 4 C 9.902344 4 10.550781 4.257813 11.03125 4.6875 C 11.503906 5.113281 11.886719 5.832031 12.21875 6.9375 L 20.21875 39.21875 C 20.519531 40.363281 20.820313 41.542969 21.65625 42.5 C 22.003906 42.898438 22.441406 43.222656 22.96875 43.46875 C 22.382813 44.164063 22 45.027344 22 46 C 22 48.199219 23.800781 50 26 50 C 28.199219 50 30 48.199219 30 46 C 30 45.265625 29.785156 44.59375 29.4375 44 L 35.5625 44 C 35.214844 44.59375 35 45.265625 35 46 C 35 48.199219 36.800781 50 39 50 C 41.199219 50 43 48.199219 43 46 C 43 44.972656 42.582031 44.054688 41.9375 43.34375 C 42.050781 43.039063 42.003906 42.695313 41.820313 42.429688 C 41.632813 42.160156 41.328125 42 41 42 L 25.71875 42 C 24.175781 42 23.546875 41.671875 23.125 41.1875 C 22.707031 40.707031 22.453125 39.867188 22.15625 38.75 L 22.15625 38.71875 L 21.46875 36 L 39.8125 36 C 40.230469 36 40.609375 35.738281 40.75 35.34375 L 47.9375 16.34375 C 48.054688 16.039063 48.011719 15.695313 47.824219 15.425781 C 47.636719 15.15625 47.328125 14.996094 47 15 L 16.28125 15 L 14.15625 6.46875 C 14.15625 6.449219 14.15625 6.425781 14.15625 6.40625 C 13.773438 5.117188 13.277344 4 12.375 3.1875 C 11.472656 2.375 10.203125 2 8.65625 2 L 2 2 C 1.96875 2 1.9375 2 1.90625 2 C 1.875 2 1.84375 2 1.8125 2 Z M 16.78125 17 L 45.5625 17 L 39.125 34 L 21 34 Z M 26 44 C 27.117188 44 28 44.882813 28 46 C 28 47.117188 27.117188 48 26 48 C 24.882813 48 24 47.117188 24 46 C 24 44.882813 24.882813 44 26 44 Z M 39 44 C 40.117188 44 41 44.882813 41 46 C 41 47.117188 40.117188 48 39 48 C 37.882813 48 37 47.117188 37 46 C 37 44.882813 37.882813 44 39 44 Z"
+              stroke-linecap="round"
+            />
+          </g>
+        </svg>
+        <svg
+          id="Search_32"
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <rect
+            width="32"
+            height="32"
+            stroke="none"
+            fill="#000000"
+            opacity="0"
+          />
+
+          <g transform="matrix(2 0 0 2 16 16)">
+            <g style="">
+              <g transform="matrix(1 0 0 1 -1.08 -1.08)">
+                <circle
+                  style="
+                    stroke: rgb(0, 0, 0);
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: round;
+                    stroke-dashoffset: 0;
+                    stroke-linejoin: round;
+                    stroke-miterlimit: 4;
+                    fill: none;
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  cx="0"
+                  cy="0"
+                  r="5.42"
+                />
+              </g>
+              <g transform="matrix(1 0 0 1 4.63 4.63)">
+                <line
+                  style="
+                    stroke: rgb(0, 0, 0);
+                    stroke-width: 1;
+                    stroke-dasharray: none;
+                    stroke-linecap: round;
+                    stroke-dashoffset: 0;
+                    stroke-linejoin: round;
+                    stroke-miterlimit: 4;
+                    fill: none;
+                    fill-rule: nonzero;
+                    opacity: 1;
+                  "
+                  x1="1.875"
+                  y1="1.875"
+                  x2="-1.875"
+                  y2="-1.875"
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="header-buttons">
+        <div class="auth-box">
+          <button class="btn">ورود</button>
+          <span>/</span>
+          <button class="btn">ثبت نام</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Slider Section -->
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./img/3-s.jpg" class="d-block w-100" alt="Slide Image 1" />
+        </div>
+        <div class="carousel-item">
+          <img src="./img/2-s.jpg" class="d-block w-100" alt="Slide Image 2" />
+        </div>
+        <div class="carousel-item">
+          <img src="./img/1-s.jpg" class="d-block w-100" alt="Slide Image 3" />
+        </div>
+      </div>
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+        ></button>
+      </div>
+    </div>
+    <!-- Product Cards -->
+    <div class="container my-5">
+      <div class="row row-cols-2 row-cols-md-4 g-4">
+        <div class="col">
+          <div class="card">
+            <span class="badge badge-special">پیشنهاد ویژه</span>
+            <div class="stars">★★★★★</div>
+            <img
+              src="https://via.placeholder.com/150x150"
+              class="card-img-top product-image"
+              alt="Product Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">هدست بی سیم مدل S100</h5>
+              <div class="price">900 هزار تومان</div>
+              <div class="action-buttons">
+                <a href="#" class="btn-heart" title="علاقه‌مندی">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    /></svg
+                ></a>
+                <a href="#" class="btn-cart" title="سبد خرید"
+                  ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M7 4v-1H3V2h4V1h8v1h4v1H7zm0 2H2v15h20V6h-13zm8 13H7v-1h8v1z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <span class="badge badge-special">پیشنهاد ویژه</span>
+            <div class="stars">★★★★★</div>
+            <img
+              src="https://via.placeholder.com/150x150"
+              class="card-img-top product-image"
+              alt="Product Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">هدست بی سیم مدل TH 5304</h5>
+              <div class="price">500 هزار تومان</div>
+              <div class="action-buttons">
+                <a href="#" class="btn-heart" title="علاقه‌مندی">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    /></svg
+                ></a>
+                <a href="#" class="btn-cart" title="سبد خرید">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M7 4v-1H3V2h4V1h8v1h4v1H7zm0 2H2v15h20V6h-13zm8 13H7v-1h8v1z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <span class="badge badge-special">پیشنهاد ویژه</span>
+            <div class="stars">★★★★★</div>
+            <img
+              src="https://via.placeholder.com/150x150"
+              class="card-img-top product-image"
+              alt="Product Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">کیف لپ تاپ مدل X200</h5>
+              <div class="price">350 هزار تومان</div>
+              <div class="action-buttons">
+                <a href="#" class="btn-heart" title="علاقه‌مندی"
+                  ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    /></svg
+                ></a>
+                <a href="#" class="btn-cart" title="سبد خرید">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M7 4v-1H3V2h4V1h8v1h4v1H7zm0 2H2v15h20V6h-13zm8 13H7v-1h8v1z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <span class="badge badge-special">پیشنهاد ویژه</span>
+            <div class="stars">★★★★★</div>
+            <img
+              src="https://via.placeholder.com/150x150"
+              class="card-img-top product-image"
+              alt="Product Image"
+            />
+
+            <div class="card-body">
+              <h5 class="card-title">گوشی موبایل مدل Z50</h5>
+              <div class="price">1 میلیون تومان</div>
+              <div class="action-buttons">
+                <a href="#" class="btn-heart" title="علاقه‌مندی"
+                  ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    /></svg
+                ></a>
+
+                <a href="#" class="btn-cart" title="سبد خرید">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M7 4v-1H3V2h4V1h8v1h4v1H7zm0 2H2v15h20V6h-13zm8 13H7v-1h8v1z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <span class="badge badge-special">پیشنهاد ویژه</span>
+            <div class="stars">★★★★★</div>
+            <img
+              src="https://via.placeholder.com/150x150"
+              class="card-img-top product-image"
+              alt="Product Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">پاوربانک مدل P300</h5>
+              <div class="price">400 هزار تومان</div>
+              <div class="action-buttons">
+                <a href="#" class="btn-heart" title="علاقه‌مندی">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    /></svg
+                ></a>
+
+                <a href="#" class="btn-cart" title="سبد خرید"
+                  ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M7 4v-1H3V2h4V1h8v1h4v1H7zm0 2H2v15h20V6h-13zm8 13H7v-1h8v1z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <span class="badge badge-special">پیشنهاد ویژه</span>
+            <div class="stars">★★★★★</div>
+            <img
+              src="https://via.placeholder.com/150x150"
+              class="card-img-top product-image"
+              alt="Product Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">اسپیکر بلوتوث مدل BT100</h5>
+              <div class="price">250 هزار تومان</div>
+              <div class="action-buttons">
+                <a href="#" class="btn-heart" title="علاقه‌مندی"
+                  ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    /></svg
+                ></a>
+
+                <a href="#" class="btn-cart" title="سبد خرید"
+                  ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M7 4v-1H3V2h4V1h8v1h4v1H7zm0 2H2v15h20V6h-13zm8 13H7v-1h8v1z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
